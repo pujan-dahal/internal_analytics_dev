@@ -8,5 +8,5 @@ sources:
       - name: _airbyte_raw_form_responses_1
 
 models:
-  - name: transfrom_form_respones
-    description: "A model to transform raw airbyte form responses data in json form into tabular form"
+  - name: test_fruits
+    description: "A test model for fruits"
