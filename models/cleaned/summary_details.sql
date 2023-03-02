@@ -55,7 +55,10 @@ select
 	  	else upper(trim(using_own_vehicle))
     end as using_own_vehicle,
     address,
-    is_hod
+    case 
+    	when upper(trim(is_hod))='YES' then 'Y'
+    	else null
+    end as is_hod
 from extracted_json
 	
 ),
