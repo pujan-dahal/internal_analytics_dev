@@ -19,22 +19,20 @@ select
 	jsonb_extract_path_text(_airbyte_data, '2. Food Coupon ID (write "00" if not taken)') as food_coupon_id,
 	jsonb_extract_path_text(_airbyte_data, '3. Will you be using the company drop off service tonight ?') as drop_off_required
 from source_table
+),
+final_table as
+(
+select
+	day,
+	to_timestamp(timestamp, 'dd/mm/yyyy HH24:MI:SS') as timestamp,
+	shift,
+	email,
+	employee_name,
+	main_department,
+	sub_department,
+	food_coupon_id::integer as food_coupon_id,
+	drop_off_required
+from extracted_json
 )
-select * from extracted_json
 
--- final_table as
--- (
--- select
--- 	day,
--- 	to_timestamp(timestamp, 'dd/mm/yyyy HH24:MI:SS') as timestamp,
--- 	shift,
--- 	email,
--- 	employee_name,
--- 	main_department,
--- 	sub_department,
--- 	food_coupon_id::integer as food_coupon_id,
--- 	drop_off_required
--- from extracted_json
--- )
-
--- select * from final_table
+select * from final_table
