@@ -30,7 +30,7 @@ select
 	employee_name,
 	main_department,
 	sub_department,
-	food_coupon_id::integer as food_coupon_id,
+	food_coupon_id,
 	drop_off_required
 from extracted_json
 )
