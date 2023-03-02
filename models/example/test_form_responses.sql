@@ -5,7 +5,7 @@
 with source_table as
 (
 	select * from {{ source('_airbyte_raw', '_airbyte_raw_form_responses_1') }} 
-)
+),
 extracted_json as
 (
 select
@@ -21,7 +21,7 @@ select
 from source_table
 )
 select * from extracted_json
-,
+
 -- final_table as
 -- (
 -- select
