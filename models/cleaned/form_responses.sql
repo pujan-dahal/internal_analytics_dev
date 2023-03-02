@@ -28,7 +28,7 @@ select
 	trim(upper(day)) as day,
 	to_timestamp(timestamp, 'dd/mm/yyyy HH24:MI:SS')::date as date,
 	shift,
-	email,
+	trim(email) as email,
 	trim(upper(employee_name)) as employee_name,
 	trim(upper(main_department)) as main_department,
 	trim(upper(sub_department)) as sub_department,
@@ -54,20 +54,44 @@ select
 from extracted_json
 ),
 
-final_table as
+form_responses_encrypted as
 (
 select
 	day,
 	date,
 	shift,
 	md5(email) as email,
-	md5(employee_name) employee_name,
+	md5(employee_name) as employee_name,
 	main_department,
 	sub_department,
 	food_coupon_id,
 	food_coupon_remarks,
 	drop_off_required
 from intermediate_table
+),
+
+employee_list_encrypted as
+(
+	select * from {{ ref('employee_list') }}
+),
+
+final_table as
+(
+select
+	fre.day,
+	fre.date,
+	fre.shift,
+	fre.email,
+	fre.employee_name,
+	ele.gender,
+	ele.main_department,
+	ele.sub_department,
+	fre.food_coupon_id,
+	fre.food_coupon_remarks,
+	fre.drop_off_required
+from form_responses_encrypted fre 
+left join employee_list_encrypted ele
+	on fre.email = ele.email	
 )
 
 select * from final_table
