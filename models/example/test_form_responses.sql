@@ -1,20 +1,12 @@
-
-/*
-    Welcome to your first dbt model!
-    Did you know that you can also configure models directly within SQL files?
-    This will override configurations stated in dbt_project.yml
-
-    Try changing "table" to "view" below
-*/
-
 {{ config(materialized='table') }}
 
 
 
--- with source_table as
--- (
--- 	select * from {{ source('_airbyte_raw', '_airbyte_raw_form_responses_1') }} 
--- ),
+with source_table as
+(
+	select * from {{ source('_airbyte_raw', '_airbyte_raw_form_responses_1') }} 
+)
+select * from source_table
 -- extracted_json as
 -- (
 -- select
@@ -45,28 +37,3 @@
 -- )
 
 -- select * from final_table
-
-with fruits as
-(
-	select
-		'apple' as fruit,
-		10 as quantity
-	union all
-	select
-		'banana' as fruit,
-		25 as quantity
-	union all
-	select
-		'apple' as fruit,
-		30 as quantity
-)
-select
-	fruit,
-	avg(quantity) as avg_quantity
-from fruits
-group by 1
-/*
-    Uncomment the line below to remove records with null `id` values
-*/
-
--- where id is not null

@@ -8,5 +8,5 @@ sources:
       - name: _airbyte_raw_form_responses_1
 
 models:
-  - name: test_fruits
-    description: "A test model for fruits"
+  - name: test_form_responses
+    description: "A test model for form responses"
