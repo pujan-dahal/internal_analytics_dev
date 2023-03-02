@@ -83,12 +83,12 @@ select
 	fre.shift,
 	fre.email,
 	fre.employee_name,
+	ele.gender as gender,
 	ele.main_department,
 	ele.sub_department,
 	fre.food_coupon_id,
 	fre.food_coupon_remarks,
-	fre.drop_off_required,
-	ele.gender as gender
+	fre.drop_off_required	
 from form_responses_encrypted fre 
 left join employee_list_encrypted ele
 	on fre.email = ele.email	
