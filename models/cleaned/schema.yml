@@ -1,0 +1,31 @@
+version: 2
+
+sources:
+  - name: _airbyte_raw
+    database: ops_ia
+    schema: cleaned
+    tables:
+      - name: _airbyte_raw_form_responses_1
+        description: "Airbyte dumped raw table of form responses"
+
+      - name: _airbyte_raw_actual_data___drop_off_
+        description: "Airbyte dumped raw table of actual data drop off"
+
+      - name: _airbyte_raw_summary_details_
+        description: "Airbyte dumped raw table of summary details"
+
+      - name: _airbyte_raw_employee_list
+        description: "Airbyte dumped raw table of employee list"
+
+models:
+  - name: form_responses
+    description: "Cleaned form responses table"
+
+  - name: actual_data_drop_off
+    description: "Cleaned actual data drop off table"
+
+  - name: summary_details
+    description: "Cleaned summary details table"
+
+  - name: employee_list
+    description: "Cleaned employee list table"
