@@ -1,21 +1,12 @@
-
 version: 2
 
-models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+sources:
+  - name: _airbyte_raw
+    database: test_db
+    schema: airbyte
+    tables:
+      - name: _airbyte_raw_books
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
-      columns:
-          - name: id
-            description: "The primary key for this table"
-            tests:
-                - unique
-                - not_null
+models:
+  - name: transform_books
+    description: "A model to transform raw airbyte dumped table into books table"
