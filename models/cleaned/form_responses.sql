@@ -27,7 +27,7 @@ intermediate_table as
 select
 	trim(upper(day)) as day,
 	to_timestamp(timestamp, 'dd/mm/yyyy HH24:MI:SS')::date as date,
-	shift,
+	trim(upper(shift)) as shift,
 	trim(email) as email,
 	trim(upper(employee_name)) as employee_name,
 	trim(upper(main_department)) as main_department,
