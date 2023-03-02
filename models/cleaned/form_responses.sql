@@ -64,7 +64,7 @@ select
 	md5(employee_name) employee_name,
 	main_department,
 	sub_department,
-	food_coupon_id::int as food_coupon_id,
+	food_coupon_id,
 	food_coupon_remarks,
 	drop_off_required
 from intermediate_table
