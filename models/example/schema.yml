@@ -5,8 +5,8 @@ sources:
     database: test_db
     schema: airbyte
     tables:
-      - name: _airbyte_raw_books
+      - name: _airbyte_raw_form_responses_1
 
 models:
-  - name: transform_books
-    description: "A model to transform raw airbyte dumped table into books table"
+  - name: form_responses_raw
+    description: "A model to transform raw airbyte form responses data in json form into tabular form"
