@@ -26,6 +26,7 @@ intermediate_table as
 select
 	upper(trim(day)) as day,
 	to_date(date, 'mm/dd/yyyy') as date,
+	upper(trim(department)) as department,
 	upper(trim(employee_name)) as employee_name,
 	upper(trim(time)) as time,
 	upper(trim(gender)) as gender,
