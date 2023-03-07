@@ -29,6 +29,10 @@ select
 	upper(trim(department)) as department,
 	upper(trim(employee_name)) as employee_name,
 	upper(trim(time)) as time,
+	case
+		when upper(trim(shift)) = 'NIGHT' then 'EVENING'
+		else upper(trim(shift))
+	end as shift,
 	upper(trim(gender)) as gender,
 	case 
 		when upper(trim(status)) is null then 'NOT FILLED'
@@ -56,6 +60,7 @@ select
 	department,
 	md5(employee_name) as employee_name,
 	time,
+	shift,
 	gender,
 	status,
 	address,
