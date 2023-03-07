@@ -52,7 +52,6 @@ final_table as
 select
 	day,
 	date,
-	department,
 	md5(employee_name) as employee_name,
 	time,
 	gender,
