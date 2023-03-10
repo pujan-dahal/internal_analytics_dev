@@ -31,4 +31,6 @@ models:
     description: "Cleaned employee list table"
 
   - name: department_gender_shift_status_per_day
+    database: ops_ia
+    schema: metrics
     description: "Metric view 1"
