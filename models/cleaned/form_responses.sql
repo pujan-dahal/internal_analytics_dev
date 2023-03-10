@@ -26,7 +26,7 @@ intermediate_table as
 (
 select
 	trim(upper(day)) as day,
-	to_timestamp(timestamp, 'dd/mm/yyyy HH24:MI:SS')::date as date,
+	to_timestamp(timestamp, 'dd/mm/yyyy HH24:MI:SS') as timestamp,
 	trim(upper(shift)) as shift,
 	trim(email) as email,
 	trim(upper(employee_name)) as employee_name,
@@ -58,7 +58,7 @@ form_responses_encrypted as
 (
 select
 	day,
-	date,
+	timestamp,
 	shift,
 	md5(email) as email,
 	md5(employee_name) as employee_name,
@@ -68,6 +68,12 @@ select
 	food_coupon_remarks,
 	drop_off_required
 from intermediate_table
+where timestamp > (select
+					case 
+						when max(timestamp) is null then '1900-01-01'::timestamp
+						else max(timestamp)
+					end as max_timestamp
+				   from {{ source('cleaned_tables', 'form_responses')}})
 ),
 
 employee_list_encrypted as
@@ -79,7 +85,7 @@ final_form_responses as
 (
 select
 	fre.day,
-	fre.date,
+	fre.timestamp,
 	fre.shift,
 	fre.email,
 	fre.employee_name,

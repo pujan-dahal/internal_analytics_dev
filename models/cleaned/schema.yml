@@ -17,6 +17,13 @@ sources:
       - name: _airbyte_raw_employee_list
         description: "Airbyte dumped raw table of employee list"
 
+  - name: cleaned_tables
+    database: ops_ia
+    schema: cleaned
+    tables:
+      - name: form_responses
+        description: "Cleaned table in postgres"
+
 models:
   - name: form_responses
     description: "Cleaned form responses table"
