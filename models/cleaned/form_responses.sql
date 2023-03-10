@@ -54,6 +54,16 @@ select
 from extracted_json
 ),
 
+existing_timestamp_table as
+(
+	select
+		case 
+			when max(timestamp) is null then to_timestamp('1900-01-01', 'yyyy-mm-dd')
+			else max(timestamp)
+		end as max_timestamp
+	from {{ source('cleaned_tables', 'form_responses')}}
+),
+
 form_responses_encrypted as
 (
 select
@@ -68,12 +78,7 @@ select
 	food_coupon_remarks,
 	drop_off_required
 from intermediate_table
-where timestamp > (select
-					case 
-						when max(timestamp) is null then to_timestamp('1900-01-01', 'yyyy-mm-dd')
-						else max(timestamp)
-					end as max_timestamp
-				   from {{ source('cleaned_tables', 'form_responses')}})
+where timestamp > (select max_timestamp from existing_timestamp_table)
 ),
 
 employee_list_encrypted as
