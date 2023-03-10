@@ -29,3 +29,6 @@ models:
 
   - name: employee_list
     description: "Cleaned employee list table"
+
+  - name: department_gender_shift_status_per_day
+    description: "Metric view 1"
