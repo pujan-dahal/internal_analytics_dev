@@ -70,7 +70,7 @@ select
 from intermediate_table
 where timestamp > (select
 					case 
-						when max(timestamp) is null then '1900-01-01'::timestamp
+						when max(timestamp) is null then to_timestamp('1900-01-01', 'yyyy-mm-dd')
 						else max(timestamp)
 					end as max_timestamp
 				   from {{ source('cleaned_tables', 'form_responses')}})
