@@ -34,3 +34,6 @@ models:
     # Applies to all files under models/example/
     cleaned:
       materialized: table
+
+    metrics:
+      materialized: view
