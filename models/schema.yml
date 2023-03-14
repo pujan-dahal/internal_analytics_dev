@@ -18,19 +18,17 @@ sources:
         description: "Airbyte dumped raw table of employee list"
 
 models:
-  cleaned:
-    - name: form_responses
-      description: "Cleaned form responses table"
+  - name: form_responses
+    description: "Cleaned form responses table"
 
-    - name: actual_data_drop_off
-      description: "Cleaned actual data drop off table"
+  - name: actual_data_drop_off
+    description: "Cleaned actual data drop off table"
 
-    - name: summary_details
-      description: "Cleaned summary details table"
+  - name: summary_details
+    description: "Cleaned summary details table"
 
-    - name: employee_list
-      description: "Cleaned employee list table"
+  - name: employee_list
+    description: "Cleaned employee list table"
 
-  metrics:
-    - name: department_gender_shift_status_per_day
-      description: "Metric view 1"
+  - name: department_gender_shift_status_per_day
+    description: "Metric view 1"
