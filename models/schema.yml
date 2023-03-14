@@ -19,7 +19,7 @@ sources:
 
 models:
   cleaned:
-    + schema: cleaned
+    schema: cleaned
     - name: form_responses
       description: "Cleaned form responses table"
 
